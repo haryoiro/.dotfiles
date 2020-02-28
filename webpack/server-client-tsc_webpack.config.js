@@ -62,3 +62,22 @@ const serverConfig = {
 }
 
 module.exports = [clientConfig, serverConfig]
+
+/**
+* .
+* ├── dist <- トランスパイル済ファイル
+* │   ├── public <- クライアントファイル
+* │   │   ├── index.html
+* │   │   └── index[hash].js
+* │   └── server.js <- サーバファイル
+* ├── package.json
+* ├── src <- トランスパイル元ファイル
+* │   ├── index.ts <-サーバファイル
+* │   └── public    <- クライアントファイル
+* │       ├── index.html
+* │       ├── index.ts
+* │       └── style.css
+* ├── tsconfig.json
+* ├── webpack.config.js
+* └── yarn.lock
+*/
