@@ -10,9 +10,10 @@ const clientConfig = {
   devtool: "none",
   entry: "./src/public/index.ts",
   output: {
-    path: path.resolve(__dirname, 'dist/public'), // プラグインで出力される場所も設定するので、クライアント側のファイルを全て格納するパスを設定
-    filename: 'index[hash].js' // ハッシュをつけることでキャッシュによる動作不良を解消する
+    path: path.resolve(__dirname, 'dist/public'),
+    filename: 'index[hash].js'
   },
+  target: "web",
   module: {
     rules: [{
       test: /\.tsx?$/,
@@ -25,7 +26,7 @@ const clientConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/public/index.html"　// トランスパイル元となるファイルを設定
+      template: "./src/public/index.html"
     })
   ]
 }
