@@ -1,18 +1,21 @@
-
+/* 
+* 全てのオプションが日本語訳されたサイトを見つけたのでここを参照する
+* http://js.studio-kingdom.com/typescript/project_configuration/compiler_options
+*/
 {
   "compilerOptions": {
     /* Basic Options */
     /* 基本的な機能 */
-    // "incremental": true,                 /* trueにすると差分のみをコンパイルする。 tsconfigを変えた場合などは最新の設定に準拠しないコードになる可能性があるので注*/
-    "target": "es6",                        /* 出力先のファイルが準拠するECMAScriptのバージョンを指定。対応バージョンは次の通り: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    // "incremental": true,                   /* trueにすると差分のみをコンパイルする。 tsconfigをあとで変えた場合などは最新の設定に準拠しないコードになる可能性があるので注*/
+    "target": "es6",                          /* 出力先のファイルが準拠するECMAScriptのバージョンを指定。対応バージョンは次の通り: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "es2015",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-    "lib": ["DOM", "ES2020" ],              /* Specify library files to be included in the compilation. */
+    "lib": ["DOM", "ES2020" ],                             /* Specify library files to be included in the compilation. */
     "allowJs": true,                       /* .jsファイルもトランスパイルするか*/
     "checkJs": true,                       /* .jsファイルのエラーも指摘*/
-    // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
-    // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    "sourceMap": true,                     /* ソースマップファイルを生成  */
+    // "jsx": "preserve",                     /* .jsxファイルもサポート */
+    // "declaration": true,                   /* 型定義ファイルをサポート(.d.ts) */
+    // "declarationMap": true,                /* 型定義ファイルのソースマップを生成(.d.ts.map)*/
+    "sourceMap": true,                     /* ソースマップファイルを生成(.js.map)  */
     // "outFile": "./",                       /* コンパイル結果を一つのファイルにまとめる */
     "outDir": "./dist",                        /* トランスパイルされたファイルが出力されるディレクトリを指定 */
     "rootDir": "./src",                       /* どのディレクトリのファイルをトランスパイルするのかを指定する。--outDirで出力先を決める */
