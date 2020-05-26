@@ -21,4 +21,3 @@ function fish_greeting
     echo -ne "  ================================================= \n\n"
     echo -ne "\e[1m"
 end
-end
