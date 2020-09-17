@@ -27,6 +27,9 @@ nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
 
+" NERDTree用ショートカット
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 if has('mouse')
     set mouse=a
     if has('mouse_sgr')
@@ -72,12 +75,16 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 " ファイルをtree表示してくれる
 Plug 'scrooloose/nerdtree'
+" ファイルアイコンを表示してくれる
+Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-nerd-fonts'
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
 " ステータスバーをいい感じにカスタマイズできる
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
@@ -137,4 +144,3 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
-
