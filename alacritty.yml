@@ -1,0 +1,146 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty it self.
+
+env:
+  # TERM env customization
+  LANG: en_US.UTF-8
+  LC_CTYPE: en_US.UTF-8
+  TERM: xterm-256color
+
+# Shell
+#
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
+#
+#  Default:
+#   - (macOS) /bin/bash --login
+#   - (Linux/BSD) user login shell
+#   - (Windows) powershell
+shell:
+  program: /usr/local/bin/fish
+  args:
+    - --login
+    - --init-command
+    - "tmux"
+
+# Startup directory
+working_directory: /Users/dev
+
+
+window:
+  # Window dimensions in character columns and lines
+  # Falls back to size specified by window manager if set to 0x0.
+  # (changes require restart)
+  dimensions:
+    columns: 80
+    lines: 24
+
+  # Adds this many blank pixels of padding around the window
+  # Units are physical pixels; this is not DPI aware.
+  # (change requires restart)
+  padding:
+    x: 1
+    y: 2
+
+  # Window decorations
+  # Setting this to false will result in window without borders and title bar.
+  # decorations: true
+
+  # Window title
+  title: Alacritty
+
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: true
+
+# Font configuration (changes require restart)
+font:
+  normal:
+    family: Source Code Pro for Powerline
+    # Style can be specified to pick a specific face.
+    # style: Regular
+
+  # Point size
+  size: 16.0
+  # (Mac Only)
+  use_thin_strokes: true
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+# scrolling:
+#   history: 10000
+#   multiplier: 3
+
+
+###############################
+## Theme Gruvbox dark
+## https://github.com/eendroroy/alacritty-theme/blob/master/themes/gruvbox_dark.yaml
+###############################
+colors:
+  primary:
+    background: "#282828"
+    foreground: "#ebdbb2"
+
+  normal:
+    black:    "#282828"
+    red:      "#cc241d"
+    green:    "#98971a"
+    yellow:   "#d79921"
+    blue:     "#458588"
+    magenta:  "#b16286"
+    cyan:     "#689d6a"
+    white:    "#a89984"
+
+  bright:
+    black:    "#928374"
+    red:      "#fb4934"
+    green:    "#b8bb26"
+    yellow:   "#fabd2f"
+    blue:     "#83a598"
+    magenta:  "#d3869b"
+    cyan:     "#8ec07c"
+    white:    "#ebdbb2"
+
+# visual_bell:
+  animation: EaseOutExpo
+  duration: 0
+
+background_opacity: 0.95
+
+key_bindings:
+  # tmux utils
+  - { key: V, mods: Command, action: Paste      }
+  - { key: C, mods: Command, action: Copy       }
+  - { key: T, mods: Command, chars: "\x02\x25"  } # C-b + % `TATE`
+  - { key: Y, mods: Command, chars: "\x02\x22"  } # C-b + " `YOKO`
+  - { key: X, mods: Command, chars: "\x02\x78"  } # C-b + x `ペインを破棄`
+
+  # Vim Like Cursor
+  - { key: H, mods: Command, chars: "\x02\x68"  } # C-b + H
+  - { key: J, mods: Command, chars: "\x02\x6a"  } # C-b + J
+  - { key: K, mods: Command, chars: "\x02\x6b"  } # C-b + K
+  - { key: L, mods: Command, chars: "\x02\x6c"  } # C-b + L
+
+  - { key: Z, mods: Command, chars: "\x02\x7a"  } # C-b + Z セッション一覧から選択
+  - { key: D, mods: Command, chars: "\x02\x26"  } # C-b + & ウィンドウを破棄
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+# Style of the cursor
+#
+# Values for 'cursor_style':
+# - ▇ Block
+# - _ Underline
+# - | Beam
+cursor:
+  style: Block
+
+# Live config reload (changes require restart)
+live_config_reload: true
