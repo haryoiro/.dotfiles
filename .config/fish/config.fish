@@ -13,19 +13,8 @@ set fish_color_search_match yellow
 set fish_color_operator     yellow
 set fish_color_escape       brown
 
-
-function fish_prompt
-  set -l last_status $status
-  printf ' '
-  if test $last_status -eq 0
-    set_color yellow
-    printf '✘╹◡╹✘'
-  else
-    set_color red
-    printf '✘>﹏<✘'
-  end
-  set_color normal
-  printf " < \n"
+if not set -q fish_abbreviations_set
+  abbr_set
 end
 
 set -g __fish_git_prompt_color_branch magenta
@@ -34,9 +23,3 @@ set -g __fish_git_prompt_color_dirtystate blue
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_invalidstate red
 set -g __fish_git_prompt_color_cleanstate green
-
-function fish_right_prompt
-  printf "%s " (__fish_git_prompt)
-  set_color cyan
-  prompt_pwd
-end
