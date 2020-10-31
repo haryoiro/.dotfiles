@@ -1,0 +1,35 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:0
+SETUVAR _fish_abbr_c:code
+SETUVAR _fish_abbr_d:docker
+SETUVAR _fish_abbr_dc:docker\x2dcompose
+SETUVAR _fish_abbr_dcd:docker\x2dcompose\x20down
+SETUVAR _fish_abbr_dce:docker\x2dcompose\x20exec
+SETUVAR _fish_abbr_dcl:docker\x20rm\x20\x28docker\x20ps\x20\x2daq\x29\x3b\x20docker\x20rmi\x20\x28docker\x20images\x20\x2dqf\x20dangling\x3dtrue\x29
+SETUVAR _fish_abbr_dcps:docker\x2dcompose\x20ps
+SETUVAR _fish_abbr_dcpsa:docker\x2dcompose\x20ps\x20\x2da
+SETUVAR _fish_abbr_dcs:docker\x2dcompose\x20stop
+SETUVAR _fish_abbr_dcu:docker\x2dcompose\x20up\x20\x2dd
+SETUVAR _fish_abbr_dcub:docker\x2dcompose\x20up\x20\x2dd\x20\x2d\x2dbuild
+SETUVAR _fish_abbr_de:docker\x20exec
+SETUVAR _fish_abbr_dim:docker\x20image
+SETUVAR _fish_abbr_do:dolphin
+SETUVAR _fish_abbr_dps:docker\x20ps\x20\x2dlq
+SETUVAR _fish_abbr_drma:docker\x20rm\x20\x28docker\x20ps\x20\x2daq\x29
+SETUVAR _fish_abbr_g:git
+SETUVAR _fish_abbr_ga:git\x20add
+SETUVAR _fish_abbr_gaa:git\x20add\x20\x2e
+SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dm
+SETUVAR _fish_abbr_gcd:git\x20checkout\x20development
+SETUVAR _fish_abbr_gch:git\x20checkout
+SETUVAR _fish_abbr_gcm:git\x20checkout\x20master
+SETUVAR _fish_abbr_gd:git\x20diff
+SETUVAR _fish_abbr_gp:git\x20push
+SETUVAR _fish_abbr_gpl:git\x20pull
+SETUVAR _fish_abbr_gpod:git\x20push\x20origin\x20development
+SETUVAR _fish_abbr_gpom:git\x20push\x20origin\x20master
+SETUVAR _fish_abbr_y:yarn
+SETUVAR fish_abbreviations_set:true
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR theme_color_scheme:gruvbox

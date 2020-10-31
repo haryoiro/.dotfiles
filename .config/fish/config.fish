@@ -23,3 +23,19 @@ set -g __fish_git_prompt_color_dirtystate blue
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_invalidstate red
 set -g __fish_git_prompt_color_cleanstate green
+
+# Aliases
+# https://github.com/sharkdp/bat
+if available bat
+  alias cat='bat'
+end
+# https://github.com/ogham/exa
+if available exa
+  alias ls='exa'
+  alias l='exa -l'
+  alias la='exa -la'
+end
+# https://github.com/sharkdp/fd
+if available fd
+  alias find='fd'
+end
