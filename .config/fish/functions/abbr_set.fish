@@ -9,19 +9,3 @@ function abbr_set --description 'set abbreviations'
   source "$HOME/.config/fish/abbreviations.fish"
   set -U fish_abbreviations_set true
 end
-
-# Aliases
-# https://github.com/sharkdp/bat
-if available bat
-  alias cat='bat'
-end
-# https://github.com/ogham/exa
-if available exa
-  alias ls='exa'
-  alias l='exa -l'
-  alias la='exa -la'
-end
-# https://github.com/sharkdp/fd
-if available fd
-  alias find='fd'
-end
