@@ -3,43 +3,56 @@ scriptencoding utf-8
 
 set fileencoding=utf-8 " 保存時の文字コード
 
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
-set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932   " 読み込み時の文字コードの自動判別. 左側が優先される
+set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先される
 
-set expandtab " タブ入力を複数の空白入力に置き換える
-set tabstop=4 " 画面上でタブ文字が占める幅
-set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent " 改行時に前の行のインデントを継続する
-set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
-set shiftwidth=4 " smartindentで増減する幅
-set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
+set number                                                " 行番号を表示
+set title                                               " タイトルを表示
+set noswapfile                                  " swpファイルの生成を無効化
+set nowritebackup                               " バックアップを無効化
+set nobackup                                      " バックアップを無効化
+set virtualedit=block           " 短径選択で文字がなくても右へ進める
+set backspace=indent,eol,start  " 挿入モードでバックスペースを使い削除できる
+set ambiwidth=double            " 全角文字専用の設定
+set wildmenu                                      " wildmenuオプションを有効
 
-set ignorecase " 検索パターンに大文字小文字を区別しない
-set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
-set hlsearch " 検索結果をハイライト
+"検索設定"
+set ignorecase                                  " 大文字小文字を区別しない
+set smartcase                                     " 小文字で検索すると大文字と小文字を無視して検索
+set wrapscan                                      " 検索がファイル末尾まで進んだらファイル先頭から再び検索
+set incsearch                                     " インクリメンタル検索
+set hlsearch                                      " 検索結果をハイライト表示
 
-set number " 行番号を表示
-set cursorline " カーソルラインをハイライト
+"表示設定"
+set noerrorbells                                " ビープ音を鳴らさない
+set shellslash                                  " Windowsでパスの区切り文字をスラッシュとして扱う
+set showmatch matchtime=1       " 対応するカッコやブレースを表示
+set cinoptions+=:0                      " インデント方法の変更
+set cmdheight=2                                 " メッセージ表示欄を二行確保
+set cursorline                                  " カーソルラインをハイライト
+set laststatus=2                                " ステータス業を常に表示
+set showcmd                                               " ウィンドウの右下にまだ実行していない入力中のコマンドを表示
+set display=lastline            " 省略されずに表示
+set history=1000                                " 履歴を10000件保存する
+hi Comment ctermfg=3      " コメントの色を水色
+set expandtab                                     " 入力モードでTbaキー押下字に半角スペースを挿入
+set shiftwidth=2                                " インデント幅
+set softtabstop=2                               " タブキー押下時に挿入される文字幅を指定
+set tabstop=2                                     " ファイル内にあるタブ文字の表示幅
+set guioptions-=T                               " ツールバーを非表示にする
+set guioptions-=a                               " やんくしたときにクリップボードに入る
+set guioptions-=m                               " メニューバーを非表示にする
+set guioptions+=R                               " 右スクロールバーを非表示
+set showmatch                                   " 対応するカッコを強調表示
+set smartindent                                 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する。
+set nofoldenable                                " 検索にマッチ下行以外を折りたたむ機能
+set clipboard=unnamed,autoselect" やんくでクリップボードにコピー
+" Escの2回押しでハイライト消去
+nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+set nrformats=                                  " すべての数を10進数として扱う
+set whichwrap=b,s,h,l,<,>,[,],~ " 行をまたいで移動
 
-nnoremap j gj
-nnoremap k gk
-nnoremap <down> gj
-nnoremap <up> gk
-
-" NERDTree用ショートカット
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
-if has('mouse')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-endif
+set mouse=a                                             " バッファスクロール
 
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -48,83 +61,71 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
-if &term =~ "xterm"
-    let &t_SI .= "\e[?2004h"
-    let &t_EI .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
-
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
-
-set clipboard+=unnamed
-
-""""""""""""""""""""""""""""""
-" プラグインのセットアップ
-""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-" ファイルオープンを便利に
-Plug 'Shougo/unite.vim'
-" Unite.vimで最近使ったファイルを表示できるようにする
-Plug 'Shougo/neomru.vim'
-" ファイルをtree表示してくれる
-Plug 'scrooloose/nerdtree'
-" ファイルアイコンを表示してくれる
-Plug 'ryanoasis/vim-devicons'
-Plug 'ryanoasis/vim-nerd-fonts'
-" 行末の半角スペースを可視化
-Plug 'bronson/vim-trailing-whitespace'
-" ステータスバーをいい感じにカスタマイズできる
+"Basic
+Plug 'preservim/nerdtree'
+Plug 'unkiwii/vim-nerdtree-sync'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar' "not working...
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'blueyed/vim-diminactive'
+Plug 'mattn/emmet-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'mileszs/ack.vim'
 
+"Color Scheme"
+Plug 'gruvbox-community/gruvbox'
+Plug 'sheerun/vim-polyglot'
+Plug 'colepeters/spacemacs-theme.vim'
 
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
-" タブ文字の表示幅
-set tabstop=2
-" Vimが挿入するインデントの幅
-set shiftwidth=2
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
+"auto-linting
+Plug 'dense-analysis/ale'
 
-" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
-""""""""""""""""""""""""""""""
-" Unit.vimの設定
-""""""""""""""""""""""""""""""
+"vim game
+Plug 'ThePrimeagen/vim-be-good'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-" sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" automatically clear search highlights after you move your cursor
+Plug 'haya14busa/is.vim'
 
 call plug#end()
-""""""""""""""""""""""""""""""
 
-syntax enable
-set background=dark
+
 colorscheme gruvbox
+highlight Normal ctermbg=0
+set termguicolors
+set background=dark
+
+let loaded_matchparen = 1
+let mapleader = " "
+
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+      \'json': ['prettier'],
+      \'typescript': ['eslint'],
+      \'typescriptreact': ['eslint'],
+      \'markdown': ['prettier'],
+      \'css': ['stylelint'],
+      \'scss': ['stylelint']}
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+
+let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeQuitOnOpen=0
 
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
