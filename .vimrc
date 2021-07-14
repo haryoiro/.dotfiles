@@ -21,9 +21,10 @@ set incsearch						" インクリメンタル検索
 set hlsearch						" 検索結果をハイライト表示
 
 "表示設定"
-"set noerrorbells					" ビープ音を鳴らさない
+set noerrorbells					" ビープ音を鳴らさない
 set shellslash						" Windowsでパスの区切り文字をスラッシュとして扱う
 set showmatch matchtime=1			" 対応するカッコやブレースを表示
+set spell                           " スペルチェック
 set cinoptions+=:0					" インデント方法の変更
 set cmdheight=2						" メッセージ表示欄を二行確保
 set cursorline 						" カーソルラインをハイライト
