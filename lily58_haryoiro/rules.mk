@@ -12,7 +12,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = no         # Unicode
-RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_ENABLE= no     # OLED display
 
@@ -24,6 +24,6 @@ SRC +=  ./lib/rgb_state_reader.c \
         ./lib/layer_state_reader.c \
         ./lib/logo_reader.c \
         ./lib/keylogger.c \
-        # ./lib/mode_icon_reader.c \
-        # ./lib/host_led_state_reader.c \
-        # ./lib/timelogger.c \
+        ./lib/host_led_state_reader.c \
+        ./lib/mode_icon_reader.c 
+        # ./lib/timelogger.c 
