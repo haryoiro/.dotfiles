@@ -107,3 +107,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #endif  // OLED_ENABLE
+
+// RGBLEDのテスト用色
+//　すべてのLEDの実装が終わり次第、正式に色を決める。
+// TODO : グラデーションにする。
+void keyboard_post_init_user(void) {
+  int i = 0;
+  for (i = 0; i < RGBLED_NUM; i++) {
+    // 1~3引数にRGB値を入れる。
+    setrgb(30, 187, 215, (LED_TYPE *)&led[i]);
+  }
+  rgblight_set();
+}
